@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgres:
+    container_name: dreadcode-db
+    image: postgres:10.7-alpine
+    environment:
+      POSTGRES_USER: dreadcode
+      POSTGRES_PASSWORD: dreadcode
+      POSTGRES_DB: dreadcode
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
