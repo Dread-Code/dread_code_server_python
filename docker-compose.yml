@@ -11,5 +11,16 @@ services:
       - "5432:5432"
     volumes:
       - ./db-data:/var/lib/postgresql/data
+  dreadcode_api:
+    image: dreadcode_api
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/dreadcode_api
+    env_file:
+      - .env
+    depends_on:
+      - postgres
 volumes:
   db-data:
