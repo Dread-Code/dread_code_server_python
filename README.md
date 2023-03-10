@@ -11,10 +11,13 @@ My first server API with python
 
 1. Run the DB:
  ```
- docker compose up
+ docker compose up postgres
  ```
  
  2. Run the server
  ```
- uvicorn main:app --reload
+ docker compose up dreadcode_api
  ```
+
+ Note: For some strange reason docker-compose in Mac doesn't load
+ the container in order to depends_on property
