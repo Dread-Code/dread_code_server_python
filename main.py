@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from database import database as connection
+import models.User as User
+import models.Movie as Movie
+
 
 app = FastAPI(title='Project for learning python with fastapi',
               description = 'In this project you will find a set of configuration that I aply with fastapi',
@@ -10,6 +13,7 @@ app = FastAPI(title='Project for learning python with fastapi',
 def startup():
     if connection.is_closed():
         connection.connect()
+        connection.create_tables([ User, Movie, ])
         print('DB connected')
 
 @app.on_event('shutdown')
